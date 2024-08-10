@@ -28,7 +28,7 @@ const Footer = () => {
       justifyContent="space-between"
       alignItems="center"
       direction={{ base: 'column', md: 'row' }}
-      bottom="0"
+      bottom={0}
     >
       <VStack>
         <Text fontSize='sm'>eInvoicer © Kean Teng 2024</Text>

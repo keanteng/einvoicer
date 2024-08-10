@@ -3,7 +3,7 @@ import { Box } from "@chakra-ui/react";
 
 export default function Home() {
   return (
-    <Box backgroundColor="gray.300" height="100vh" width="100vw">
+    <Box backgroundColor="gray.300" height="auto" width="100vw">
       <InvoiceForm />
     </Box>
   );
