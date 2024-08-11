@@ -5,6 +5,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'eInvoicer',
   description: 'eInvoicer is a simple invoicing app for eInvoice generation.',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
  
 
