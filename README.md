@@ -13,18 +13,19 @@ The invoice contains all the required fields required for digital verification b
 The app makes uses of `pdf-lib`, a javascript package to capture data from the invoice form and convert it to a PDF document. The display of the PDF document generated make use of `iframe` and can be viewed on any chromium browser.
 
 **Table of Contents:**
-- [Live Demo](#live-demo)
-- [Preview](#preview)
-- [Getting Started](#getting-started)
-- [Roadmap](#roadmap)
+- [Live Demo ⚡](#live-demo-)
+- [Preview 🌐](#preview-)
+- [Getting Started 🔍](#getting-started-)
+- [Roadmap 🛣️](#roadmap-️)
 
 
-## Live Demo
+## Live Demo ⚡
 
-## Preview
+## Preview 🌐
 ![alt text](image-1.png)
 ![alt text](image-2.png)
-## Getting Started
+
+## Getting Started 🔍
 
 To run it locally:
 
@@ -39,7 +40,7 @@ npm run dev
 yarn dev
 ```
 
-## Roadmap
+## Roadmap 🛣️
 - [ ] Currency picker
 - [ ] Usage of API for:
   - Storing invoice in a database
