@@ -1,58 +1,27 @@
-{/*'use client'
-import React, { useState } from 'react';
-import { useForm, useFieldArray } from 'react-hook-form';
-import { Stack, Box, HStack, FormControl, Input, Button, VStack, Text, Center, Divider } from '@chakra-ui/react';
-import SalesSummary from '../sales_summary';
+'use client';
 
-const InvoiceData = () => {
-    const {
-        handleSubmit,
-        register,
-        control,
-        formState: { errors, isSubmitting },
-      } = useForm()
+import {
+    FormControl,
+    Button,
+    Input,
+    HStack,
+    Text,
+    Center,
+    Divider,
+    Tooltip
+} from '@chakra-ui/react';
+import { useFieldArray } from 'react-hook-form';
 
+export default function SalesArray({control, register}){
     const { fields, append, remove } = useFieldArray({
         control,
         name: 'sales_data',
     })
 
-      function onSubmit(values) {
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            resolve()
-            localStorage.setItem('sales_data', JSON.stringify(values));
-            //getData();
-          }, 3000)
-        })
-      }
-
     return (
-        <Stack spacing={8} mb={20} direction={{ base: 'column', md: 'row' }}>
-
-        <Box p={10} bg='white' rounded={5} boxShadow="lg" width={850}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-                
-                <FormControl>
-                    <Input
-                        type="text"
-                        size="xs"
-                        placeholder='Name'
-                        {...register('name')}
-                    />
-                </FormControl>
-                <FormControl>
-                    <Input
-                        type="email"
-                        size="xs"
-                        id="email"
-                        placeholder='Email'
-                        {...register('email')}
-                    />
-                </FormControl>
-                
-                <Text fontSize="xl" as='b' mb={2}>
+        <>
+        {/* Sales Order Section*/}
+        <Text fontSize="xl" as='b' mb={2} ml={10}>
                     Sales&nbsp;Order
                 </Text>
 
@@ -60,7 +29,7 @@ const InvoiceData = () => {
                     <Divider orientation='horizontal' width={800} mb={2} mt={2}/>
                 </Center>
 
-                <HStack spacing={2} mb={2}>
+                <HStack spacing={2} mb={2} ml={10}>
                     <Text w={260} as='b' fontSize="sm">
                         Product Name
                     </Text>
@@ -88,89 +57,77 @@ const InvoiceData = () => {
                 </HStack>
 
                 {fields.map((id, index) => (
-                    <HStack key={id} spacing={2}>
-                        <FormControl key={id} w={260}>
+                    <HStack ml={10}>
+                        <FormControl key={id}>
+                            <HStack spacing={2}>
                             <Input
                                 type="text"
                                 size="sm"
                                 placeholder='Product Name'
                                 defaultValue="Heavenly Demon Sword (SSS)"
                                 {...register(`sales_data.${index}.product_name`)}
+                                w={260}
                             />
-                        </FormControl>
-                        
-                        <FormControl key={id} w={79}>
+
                             <Input
                                 type="number"
                                 size="sm"
                                 placeholder='Quantity'
                                 defaultValue={2}
                                 {...register(`sales_data.${index}.quantity`)}
+                                w={79}
                             />
-                        </FormControl>
 
-                        <FormControl key={id} w={61}>
                             <Input
                                 type="text"
                                 size="sm"
                                 placeholder='SKU'
                                 defaultValue="CTN"
                                 {...register(`sales_data.${index}.sku`)}
+                                w={61}
                             />
-                        </FormControl>
 
-                        <FormControl key={id} w={85}>
                             <Input
-                                type="number"
+                                type="text"
                                 size="sm"
                                 placeholder='Unit Cost'
                                 defaultValue={10000}
                                 {...register(`sales_data.${index}.unit_cost`)}
+                                w={85}
                             />
-                        </FormControl>
-
-                        <FormControl key={id} w={85}>
+  
                             <Input
                                 type="number"
                                 size="sm"
                                 placeholder='Discount'
                                 defaultValue={2}
                                 {...register(`sales_data.${index}.discount`)}
+                                w={85}
                             />
-                        </FormControl>
-
-                        <FormControl key={id} w={85}>
+                            <Tooltip label="6% Tax by Government">
                             <Input
                                 type="number"
                                 size="sm"
                                 placeholder='Tax Rate'
                                 defaultValue={6}
                                 {...register(`sales_data.${index}.tax_rate`)}
+                                w={85}
+                                readOnly
                             />
+                            </Tooltip>
+                            </HStack>
                         </FormControl>
 
-                        <Button type="button" onClick={() => remove(index)} size="sm">
+                        <Button type="button" onClick={() => remove(index)} size="sm" mr={10}>
                             Remove
                         </Button>
                     </HStack>
                 ))}
             
-            <HStack mt={3}>
-                <Button type="button" onClick={() => append({})} size="sm">
+                <Button type="button" onClick={() => append({})} size="sm" ml={10} mb={10} mt={5}>
                     Add Field
                 </Button>
-                <Button type="submit" isLoading={isSubmitting} size="sm">
-                    Save
-                </Button>
-            </HStack>
-            </form>
+        </>
+    )
+}
 
-            <SalesSummary />
-        </Box>
-
-        </Stack>
-    );
-};
-
-export default InvoiceData;
-*/}

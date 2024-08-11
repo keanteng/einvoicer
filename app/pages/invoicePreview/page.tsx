@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { PDFDocument, rgb } from 'pdf-lib';
+import {Center} from '@chakra-ui/react';
 
 // company info text adder
 
@@ -180,7 +181,7 @@ function buyer_info_text(page) {
     }
 }
 
-const About = () => {
+const InvoicePreview = () => {
     const [pdfUrl, setPdfUrl] = useState('');
 
     useEffect(() => {
@@ -214,10 +215,10 @@ const About = () => {
     }, []);
 
     return (
-        <div>
-            {pdfUrl && <iframe src={pdfUrl} width="1000px" height="600px" />}
-        </div>
+        <Center mt={5}>
+            {pdfUrl && <iframe src={pdfUrl} width="1050px" height="1000px" />}
+        </Center>
     );
 };
 
-export default About;
+export default InvoicePreview;

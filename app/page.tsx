@@ -1,4 +1,4 @@
-import InvoiceForm from "./components/invoice/invoiceform";
+import InvoiceForm from "./components/invoice/invoiceForm";
 import { Box } from "@chakra-ui/react";
 
 export default function Home() {
