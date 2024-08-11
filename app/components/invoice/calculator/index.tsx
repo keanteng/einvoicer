@@ -30,7 +30,7 @@ export const Calculator = ({control, setValue})=> {
 
     setValue('subtotal', subtotal);
     setValue('total_exclude_tax', total_exclude_tax);
-    setValue('tax_amount', tax_amount);
+    setValue('tax_amount', tax_amount.toFixed(2));
 
     return (
         <>
@@ -61,7 +61,7 @@ export const Calculator = ({control, setValue})=> {
                 </Text>
 
                 <Text fontSize="md" as="samp" ml={10}>
-                RM&nbsp;{tax_amount}
+                RM&nbsp;{tax_amount.toFixed(2)}
                 </Text>
             </HStack>
 

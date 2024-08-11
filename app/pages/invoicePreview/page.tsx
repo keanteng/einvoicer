@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { PDFDocument, rgb } from 'pdf-lib';
-import {Center} from '@chakra-ui/react';
+import {Stack} from '@chakra-ui/react';
 
 // company info text adder
 
@@ -181,6 +181,155 @@ function buyer_info_text(page) {
     }
 }
 
+function item_info_text(page) {
+    // fields limited to this function only
+    const fields = [
+        "product_name",
+        "quantity",
+        "unit_cost",
+        "discount",
+        "tax_rate",
+    ]
+
+    // load data
+    const data = localStorage.getItem('invoice_data');
+    const dataObj = JSON.parse(data);
+    const sales_dataObj = dataObj['sales_data'];
+    //console.log(sales_dataObj[0].product_name);
+
+    for (let i = 0; i < sales_dataObj.length; i++) {
+        const temp = fields[0];
+        const temp1 = fields[1];
+        const temp2 = fields[2];
+        const temp3 = fields[3];
+        const temp4 = fields[4];
+        //product name
+        page.drawText(sales_dataObj[i][temp], {
+            x: 45,
+            y: 437 - i*16,
+            size: 10,
+            color: rgb(0, 0, 0),
+        });
+        // quantity
+        page.drawText(sales_dataObj[i][temp1], {
+            x: 217,
+            y: 437 - i*16,
+            size: 10,
+            color: rgb(0, 0, 0),
+        });
+        // unit cost
+        page.drawText("RM " + sales_dataObj[i][temp2], {
+            x: 253,
+            y: 437 - i*16,
+            size: 10,
+            color: rgb(0, 0, 0),
+        });
+        // discount
+        page.drawText(sales_dataObj[i][temp3] + "%", {
+            x: 374,
+            y: 437 - i*16,
+            size: 10,
+            color: rgb(0, 0, 0),
+        });
+        // tax rate
+        page.drawText(sales_dataObj[i][temp4] + "%", {
+            x: 419,
+            y: 437 - i*16,
+            size: 10,
+            color: rgb(0, 0, 0),
+        });
+    }
+}
+
+function total_info_text(page) {
+    const fields = [
+        "subtotal",
+        "total_exclude_tax",
+        "tax_amount"
+    ]
+
+    // load data
+    // load data
+    const data = localStorage.getItem('invoice_data');
+    const dataObj = JSON.parse(data);
+
+    for (let i = 0; i < 5; i++) {
+        const temp = fields[0];
+        const temp1 = fields[1];
+        const temp2 = fields[2];
+        if (i === 0 || i === 3 || i === 4){
+            page.drawText("RM " + dataObj[temp], {
+                x: 481,
+                y: 150 - i*16,
+                size: 10,
+                color: rgb(0, 0, 0),
+            });
+        } else if (i === 1){
+            page.drawText("RM " + dataObj[temp1], {
+                x: 481,
+                y: 150 - i*16,
+                size: 10,
+                color: rgb(0, 0, 0),
+            });
+        } else {
+            page.drawText("RM " + dataObj[temp2], {
+                x: 481,
+                y: 150 - i*16,
+                size: 10,
+                color: rgb(0, 0, 0),
+            });
+        }
+    }
+}
+
+function tax_table(page) {
+    const fields = [
+        "total_exclude_tax",
+        "tax_amount"
+    ]
+
+    // load data
+    // load data
+    const data = localStorage.getItem('invoice_data');
+    const dataObj = JSON.parse(data);
+
+    for (let i = 0; i < 4; i++) {
+        const temp = fields[0];
+        const temp1 = fields[1];
+        if (i === 0){
+            page.drawText("RM " + dataObj[temp], {
+                x: 47,
+                y: 132,
+                size: 10,
+                color: rgb(0, 0, 0),
+            });
+        } else if (i === 1){
+            page.drawText("SST", {
+                x: 136,
+                y: 132,
+                size: 10,
+                color: rgb(0, 0, 0),
+            });
+        } else if (i === 2){
+            page.drawText("6%", {
+                x: 212,
+                y: 132,
+                size: 10,
+                color: rgb(0, 0, 0),
+            });
+        } else {
+            page.drawText("RM " + dataObj[temp1], {
+                x: 255,
+                y: 132,
+                size: 10,
+                color: rgb(0, 0, 0),
+            });
+        } 
+    }
+}
+
+
+
 const InvoicePreview = () => {
     const [pdfUrl, setPdfUrl] = useState('');
 
@@ -204,6 +353,9 @@ const InvoicePreview = () => {
             invoice_info_text(firstPage);
             invoice_validation_text(firstPage);
             buyer_info_text(firstPage);
+            item_info_text(firstPage);
+            total_info_text(firstPage);
+            tax_table(firstPage);
 
             const pdfBytes = await pdfDoc.save();
             const blob = new Blob([pdfBytes], { type: 'application/pdf' });
@@ -215,9 +367,11 @@ const InvoicePreview = () => {
     }, []);
 
     return (
-        <Center mt={5}>
-            {pdfUrl && <iframe src={pdfUrl} width="1050px" height="1000px" />}
-        </Center>
+        <>
+        <Stack alignItems="center">
+            {pdfUrl && <iframe src={pdfUrl} width="1180px" height="1000px" />}
+        </Stack>
+        </>
     );
 };
 
