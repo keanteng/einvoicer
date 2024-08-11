@@ -17,7 +17,7 @@ function company_info_text(page) {
 
     // load data
     const data = localStorage.getItem('invoice_data');
-    const dataObj = JSON.parse(data);
+    const dataObj = JSON.parse(data || '{}');
 
     for (let i = 0; i < fields.length; i++) {
         const temp = fields[i];
@@ -44,7 +44,7 @@ function supplier_info_text(page) {
 
     // load data
     const data = localStorage.getItem('invoice_data');
-    const dataObj = JSON.parse(data);
+    const dataObj = JSON.parse(data || '{}');
 
     for (let i = 0; i < fields.length; i++) {
         const temp = fields[i];
@@ -69,7 +69,7 @@ function payment_info_text(page) {
 
     // load data
     const data = localStorage.getItem('invoice_data');
-    const dataObj = JSON.parse(data);
+    const dataObj = JSON.parse(data || '{}');
 
     for (let i = 0; i < fields.length; i++) {
 
@@ -111,7 +111,7 @@ function invoice_info_text(page) {
 
     // load data
     const data = localStorage.getItem('invoice_data');
-    const dataObj = JSON.parse(data);
+    const dataObj = JSON.parse(data || '{}');
 
     for (let i = 0; i < 2; i++) {
         if (i === 1){
@@ -168,7 +168,7 @@ function buyer_info_text(page) {
 
     // load data
     const data = localStorage.getItem('invoice_data');
-    const dataObj = JSON.parse(data);
+    const dataObj = JSON.parse(data || '{}');
 
     for (let i = 0; i < fields.length; i++) {
         const temp = fields[i];
@@ -193,7 +193,7 @@ function item_info_text(page) {
 
     // load data
     const data = localStorage.getItem('invoice_data');
-    const dataObj = JSON.parse(data);
+    const dataObj = JSON.parse(data || '{}');
     const sales_dataObj = dataObj['sales_data'];
     //console.log(sales_dataObj[0].product_name);
 
@@ -251,7 +251,7 @@ function total_info_text(page) {
     // load data
     // load data
     const data = localStorage.getItem('invoice_data');
-    const dataObj = JSON.parse(data);
+    const dataObj = JSON.parse(data || '{}');
 
     for (let i = 0; i < 5; i++) {
         const temp = fields[0];
@@ -291,7 +291,7 @@ function tax_table(page) {
     // load data
     // load data
     const data = localStorage.getItem('invoice_data');
-    const dataObj = JSON.parse(data);
+    const dataObj = JSON.parse(data || '{}');
 
     for (let i = 0; i < 4; i++) {
         const temp = fields[0];

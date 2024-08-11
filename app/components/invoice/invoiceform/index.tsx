@@ -18,13 +18,6 @@ import SupplierBuyer from '../supplierBuyer';
 import SalesArray from '../salesArray';
 import { Calculator } from '../calculator';
 
-// check if data is stored in local storage
-function getData() {
-    const data = localStorage.getItem('invoice_data');
-    const dataObj = JSON.parse(data);
-    console.log(dataObj.company_name);
-}
-
 export default function InvoiceForm() {
     const {
         handleSubmit,
@@ -35,7 +28,7 @@ export default function InvoiceForm() {
       } = useForm()
     
       function onSubmit(values) {
-        return new Promise((resolve) => {
+        return new Promise<void>((resolve) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2))
             resolve()

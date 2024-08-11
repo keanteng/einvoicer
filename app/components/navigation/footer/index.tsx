@@ -35,7 +35,7 @@ const Footer = () => {
       </VStack>
 
       {/* Desktop Screen */}
-      <HStack spacing={4} alignItems="center" d={{ base: 'none', md: 'flex' }}>
+      <HStack spacing={4} alignItems="center" display={{ base: 'none', md: 'flex' }}>
         {links.map((link, index) => (
           <CustomLink key={index}>{link}</CustomLink>
         ))}

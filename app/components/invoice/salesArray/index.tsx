@@ -10,7 +10,7 @@ import {
     Divider,
     Tooltip
 } from '@chakra-ui/react';
-import { useFieldArray } from 'react-hook-form';
+import { useFieldArray, Controller } from 'react-hook-form';
 
 export default function SalesArray({control, register}){
     const { fields, append, remove } = useFieldArray({
@@ -56,67 +56,73 @@ export default function SalesArray({control, register}){
 
                 </HStack>
 
-                {fields.map((id, index) => (
-                    <HStack ml={10}>
-                        <FormControl key={id}>
+                {fields.map((field, index) => (
+                    <HStack ml={10} key={index}>
                             <HStack spacing={2}>
-                            <Input
-                                type="text"
-                                size="sm"
-                                placeholder='Product Name'
-                                defaultValue="Heavenly Demon Sword (SSS)"
-                                {...register(`sales_data.${index}.product_name`)}
-                                w={260}
-                            />
-
-                            <Input
-                                type="number"
-                                size="sm"
-                                placeholder='Quantity'
-                                defaultValue={2}
-                                {...register(`sales_data.${index}.quantity`)}
-                                w={79}
-                            />
-
-                            <Input
-                                type="text"
-                                size="sm"
-                                placeholder='SKU'
-                                defaultValue="CTN"
-                                {...register(`sales_data.${index}.sku`)}
-                                w={61}
-                            />
-
-                            <Input
-                                type="text"
-                                size="sm"
-                                placeholder='Unit Cost'
-                                defaultValue={10000}
-                                {...register(`sales_data.${index}.unit_cost`)}
-                                w={85}
-                            />
-  
-                            <Input
-                                type="number"
-                                size="sm"
-                                placeholder='Discount'
-                                defaultValue={2}
-                                {...register(`sales_data.${index}.discount`)}
-                                w={85}
-                            />
-                            <Tooltip label="6% Tax by Government">
-                            <Input
-                                type="number"
-                                size="sm"
-                                placeholder='Tax Rate'
-                                defaultValue={6}
-                                {...register(`sales_data.${index}.tax_rate`)}
-                                w={85}
-                                readOnly
-                            />
-                            </Tooltip>
+                            <FormControl>
+                                <Input
+                                    type="text"
+                                    size="sm"
+                                    placeholder='Product Name'
+                                    defaultValue="Heavenly Demon Sword (SSS)"
+                                    {...register(`sales_data.${index}.product_name`)}
+                                    w={260}
+                                />
+                            </FormControl>
+                            <FormControl>
+                                <Input
+                                    type="number"
+                                    size="sm"
+                                    placeholder='Quantity'
+                                    defaultValue={2}
+                                    {...register(`sales_data.${index}.quantity`)}
+                                    w={79}
+                                />
+                            </FormControl>
+                            <FormControl>
+                                <Input
+                                    type="text"
+                                    size="sm"
+                                    placeholder='SKU'
+                                    defaultValue="CTN"
+                                    {...register(`sales_data.${index}.sku`)}
+                                    w={61}
+                                />
+                            </FormControl>
+                            <FormControl>
+                                <Input
+                                    type="text"
+                                    size="sm"
+                                    placeholder='Unit Cost'
+                                    defaultValue={10000}
+                                    {...register(`sales_data.${index}.unit_cost`)}
+                                    w={85}
+                                />
+                            </FormControl>
+                            <FormControl>
+                                <Input
+                                    type="number"
+                                    size="sm"
+                                    placeholder='Discount'
+                                    defaultValue={2}
+                                    {...register(`sales_data.${index}.discount`)}
+                                    w={85}
+                                />
+                            </FormControl>
+                            <FormControl>
+                                <Tooltip label="6% Tax by Government">
+                                <Input
+                                    type="number"
+                                    size="sm"
+                                    placeholder='Tax Rate'
+                                    defaultValue={6}
+                                    {...register(`sales_data.${index}.tax_rate`)}
+                                    w={85}
+                                    readOnly
+                                />
+                                </Tooltip>
+                            </FormControl>
                             </HStack>
-                        </FormControl>
 
                         <Button type="button" onClick={() => remove(index)} size="sm" mr={10}>
                             Remove
