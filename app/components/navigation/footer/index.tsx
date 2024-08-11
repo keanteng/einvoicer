@@ -5,14 +5,14 @@ import { FaGithub, FaMedium} from 'react-icons/fa';
 const links = ['Home'];
 const accounts = [
   {
-    url: 'https://github.com/MA-Ahmad/templateskart',
+    url: 'https://github.com/keanteng/einvoicer',
     label: 'Github Account',
     type: 'gray',
     icon: <FaGithub />
   },
   {
-    url: 'https://twitter.com/muhammad_ahmaad',
-    label: 'Twitter Account',
+    url: 'https://medium.com/@khorkeanteng',
+    label: 'Medium Account',
     type: 'gray',
     icon: <FaMedium />
   },

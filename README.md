@@ -20,6 +20,7 @@ The app makes uses of `pdf-lib`, a javascript package to capture data from the i
 
 
 ## Live Demo ⚡
+https://einvoicer-atudrz8dw-keantengs-projects.vercel.app/
 
 ## Preview 🌐
 ![alt text](image-1.png)
